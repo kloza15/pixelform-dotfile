@@ -39,5 +39,3 @@ To get started with this project, follow these simple steps in your terminal:
     ```
 
 -----
-
-Would you like me to use this new structure to generate the complete, formatted `README.md` file now?
