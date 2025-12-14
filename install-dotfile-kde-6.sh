@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # Exit immediately if a command exits with a non-zero status
+# We turn this off temporarily during installation to handle errors gracefully
 set -e
 
-echo "--- Starting Advanced Setup Script ---"
+echo "--- Starting Advanced Setup Script (Fixed for Fedora) ---"
 
 # 1. Detect System / Distribution
 if [ -f /etc/os-release ]; then
-    # Load OS details
     . /etc/os-release
     echo "Detected System: $NAME ($ID)"
 else
-    echo "Warning: Unable to detect specific distribution via /etc/os-release"
+    echo "Warning: Unable to detect specific distribution."
 fi
 
 # 2. Cleanup: Remove old fastfetch configuration
@@ -24,52 +24,71 @@ else
     echo "No old configuration found. Proceeding..."
 fi
 
+# Helper function to install lsix manually from source
+# Used when package manager doesn't have lsix (like Fedora)
+install_lsix_manually() {
+    echo "Attempting to install 'lsix' manually from GitHub..."
+    if command -v git &> /dev/null; then
+        TEMP_DIR=$(mktemp -d)
+        git clone https://github.com/hackerb9/lsix.git "$TEMP_DIR"
+        
+        # Install to /usr/local/bin so all users can use it
+        echo "Installing lsix to /usr/local/bin..."
+        sudo cp "$TEMP_DIR/lsix" /usr/local/bin/
+        sudo chmod +x /usr/local/bin/lsix
+        
+        rm -rf "$TEMP_DIR"
+        echo "lsix installed successfully via manual method."
+    else
+        echo "Error: 'git' is required to install lsix manually but it wasn't found."
+    fi
+}
+
 # 3. Universal Installation Function
-# Installs: fastfetch, lsix, shells (zsh, fish), and chafa (for universal image support)
 install_packages() {
     echo "--- Installing Packages ---"
     
-    # Define package list
-    # fastfetch: System information tool
-    # lsix: Sixel-based image viewer (Works best in Konsole)
-    # zsh: Z Shell
-    # fish: Friendly Interactive Shell
-    # chafa: Terminal graphics (Works in ALL shells/terminals)
-    PACKAGES="fastfetch lsix zsh fish chafa"
+    # Common packages that usually exist in all repos
+    # We separated lsix because it often causes errors on Fedora/Arch
+    BASE_PACKAGES="fastfetch zsh fish chafa git"
     
     if command -v apt &> /dev/null; then
-        # Debian / Ubuntu / Mint / Kali
+        # Debian / Ubuntu / Kali
         echo "Using 'apt' package manager..."
         sudo apt update
-        sudo apt install -y $PACKAGES
+        # apt usually has lsix, so we try installing it with base packages
+        sudo apt install -y $BASE_PACKAGES lsix
 
     elif command -v pacman &> /dev/null; then
-        # Arch Linux / Manjaro
+        # Arch Linux
         echo "Using 'pacman' package manager..."
-        # Sync and install available packages
-        sudo pacman -Syu --noconfirm fastfetch zsh fish chafa
-        # lsix might be in AUR for Arch, trying generic repo just in case, 
-        # or skipping if not found to prevent script failure.
-        if sudo pacman -S --noconfirm lsix 2>/dev/null; then
-             echo "lsix installed."
-        else
-             echo "Notice: 'lsix' not found in standard Arch repos. Please install via AUR (yay -S lsix)."
+        sudo pacman -Syu --noconfirm $BASE_PACKAGES
+        
+        # Try installing lsix, if fails, use manual method
+        if ! sudo pacman -S --noconfirm lsix 2>/dev/null; then
+            install_lsix_manually
         fi
 
     elif command -v dnf &> /dev/null; then
         # Fedora / RHEL
         echo "Using 'dnf' package manager..."
-        sudo dnf install -y fastfetch lsix zsh fish chafa
+        # NOTE: We do NOT include lsix here because Fedora repos don't have it.
+        # Adding --skip-broken to ignore "already installed" errors if any arise
+        sudo dnf install -y $BASE_PACKAGES --skip-broken
+        
+        # Fedora requires manual install for lsix
+        install_lsix_manually
 
     elif command -v zypper &> /dev/null; then
         # openSUSE
         echo "Using 'zypper' package manager..."
-        sudo zypper install -y fastfetch lsix zsh fish chafa
+        sudo zypper install -y $BASE_PACKAGES
+        install_lsix_manually
 
     elif command -v apk &> /dev/null; then
         # Alpine Linux
         echo "Using 'apk' package manager..."
-        sudo apk add fastfetch lsix zsh fish chafa
+        sudo apk add $BASE_PACKAGES lsix
 
     else
         echo "Error: No supported package manager found."
@@ -81,7 +100,6 @@ install_packages() {
 install_packages
 
 # 4. Move new configuration files
-# Source directory (Relative path: assumes script is run from project root)
 SOURCE_DIR="./fastfetch"
 TARGET_DIR="$HOME/.config/fastfetch"
 
@@ -89,12 +107,8 @@ echo "--- Copying Configuration ---"
 
 # Check if the source directory exists
 if [ -d "$SOURCE_DIR" ]; then
-    # Create the destination directory
     mkdir -p "$TARGET_DIR"
-
-    # Copy all contents recursively
     cp -r "$SOURCE_DIR/"* "$TARGET_DIR/"
-    
     echo "Configuration successfully copied to: $TARGET_DIR"
 else
     echo "Error: Source directory '$SOURCE_DIR' not found!"
@@ -109,6 +123,6 @@ echo "- Bash: $(command -v bash)"
 echo "- Zsh:  $(command -v zsh)"
 echo "- Fish: $(command -v fish)"
 echo ""
-echo "Image Support Info:"
-echo "- Use 'lsix filename.png' for High-Res Sixel support (Requires Konsole/mlterm)."
-echo "- Use 'chafa filename.png' for Universal support on ANY shell/terminal."
+echo "Image Support:"
+echo "- lsix: Installed manually/via repo (Best for Konsole)."
+echo "- chafa: Installed (Universal fallback for all terminals)."
