@@ -11,7 +11,7 @@
   <br>
   
   <!-- Wallpaper Preview -->
-  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="60%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
   <br><br>
 
@@ -123,15 +123,14 @@ This script manages your desktop background.
 
 ---
 
-## ⚠️ Manual Action Required (KDE Users)
+### ⚠️ Manual Font Setup
+For icons to appear correctly, you must set your **Terminal Font** or **Monospace Font** to **"Hack"**.
 
-The scripts handle almost everything, but GUI settings for fonts in KDE Plasma cannot be changed via script reliably.
-
-1.  Open **System Settings**.
-2.  Go to **Appearance** -> **Fonts**.
-3.  Find **Fixed width** (Monospace).
-4.  Change it to **Hack 10pt**.
-5.  Click **Apply**.
+*   **KDE Plasma:** System Settings ➜ Appearance ➜ Fonts ➜ Fixed width ➜ **Hack 10pt**.
+*   **GNOME Terminal:** Menu ➜ Preferences ➜ Profiles ➜ Text ➜ Custom font ➜ **Hack**.
+*   **XFCE Terminal:** Edit ➜ Preferences ➜ Appearance ➜ Font ➜ **Hack**.
+*   **Other Terminals:** Go to your terminal settings and select **Hack Nerd Font**.
+```
 
 ---
 
