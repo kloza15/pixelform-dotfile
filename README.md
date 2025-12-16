@@ -9,7 +9,7 @@
   
   <br>
   
-  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="60%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
   <br><br>
 
