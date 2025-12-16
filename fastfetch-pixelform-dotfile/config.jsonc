@@ -1,0 +1,224 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    // عند وضع مسار مجلد، فاست فيتش يقوم تلقائياً باختيار صورة عشوائية منه (نفس وظيفة find | shuf)
+     "source": "$(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/pngs/\" -name \"*.png\" | shuf -n 1)",
+    "height": 24, // الارتفاع ليغطي كامل القائمة
+    "width": 40,  // العرض متناسق
+    "preserveAspectRatio": true, // يمنع تمطيط الصورة
+    "padding": {
+      "top": 4,
+      "right": 1,
+      "left": 1,
+      "bottom": 4
+    }
+  },
+  "display": {
+    "separator": "",
+    "stat": false,
+    "pipe": false,
+    "showErrors": false,
+    "noBuffer": false,
+    "disableLinewrap": true,
+    "key": {
+        "width": 16
+    }
+  },
+  "modules": [
+    // --- Header ---
+    {
+        "type": "title",
+        "format": "●  Welcome:{user-name-colored}"
+    },
+
+    // Spacer
+    { "type": "custom", "format": "" },
+
+    // Top Colors
+    {
+      "type": "colors",
+      "paddingLeft": 1,
+      "symbol": "circle",
+      "block": {
+        "range": [1, 6]
+      }
+    },
+    
+    // Spacer
+    { "type": "custom", "format": "" },
+
+    // --- System & Core (Red) ---
+    {
+      "type": "os",
+      "key": "🐧 OS",
+      "keyColor": "red",
+      "format": "{2} {8}"
+    },
+    {
+      "type": "kernel",
+      "key": "⚙️ Kernel",
+      "keyColor": "red"
+    },
+    {
+      "type": "uptime",
+      "key": "⏳ Uptime",
+      "keyColor": "red"
+    },
+    {
+      "type": "packages",
+      "key": "📦 Pkgs",
+      "keyColor": "red"
+    },
+
+    // --- Interface & Soft (Yellow) ---
+    {
+      "type": "shell",
+      "key": "🐚 Shell",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "de",
+      "key": "🖼️ DE",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wm",
+      "key": "🔲 WM",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "wmtheme",
+      "key": "🎨 Theme",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "icons",
+      "key": "📂 Icons",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "cursor",
+      "key": "🖱️ Cursor",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "font",
+      "key": "🔤 SysFont",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "terminal",
+      "key": "📟 Term",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "terminalfont",
+      "key": "🔡 T-Font",
+      "keyColor": "yellow"
+    },
+
+    // --- Hardware & Drivers (Blue) ---
+    {
+      "type": "board",
+      "key": "🕸️ Board",
+      "keyColor": "blue"
+    },
+    {
+      "type": "cpu",
+      "key": "🧠 CPU",
+      "keyColor": "blue",
+      "showPeCoreCount": true
+    },
+    {
+      "type": "gpu",
+      "key": "🎮 GPU",
+      "keyColor": "blue"
+    },
+    {
+      "type": "display",
+      "key": "🖥️ Screen",
+      "keyColor": "blue",
+    },
+    {
+      "type": "vulkan",
+      "key": "🌋 Vulkan",
+      "keyColor": "blue"
+    },
+    {
+      "type": "opengl",
+      "key": "🧊 OpenGL",
+      "keyColor": "blue"
+    },
+
+    // --- Peripherals (Cyan) ---
+    {
+      "type": "camera",
+      "key": "📷 Cam",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "gamepad",
+      "key": "🕹️ Pad",
+      "keyColor": "cyan"
+    },
+
+    // --- Network & Users (Green) ---
+    {
+      "type": "wifi",
+      "key": "📡 Wifi",
+      "keyColor": "green",
+      "format": "{ssid}"
+    },
+    {
+      "type": "bluetooth",
+      "key": "🦷 BT",
+      "keyColor": "green"
+    },
+    {
+      "type": "users",
+      "key": "👥 Users",
+      "keyColor": "green"
+    },
+
+    // --- Resources (Magenta) ---
+    {
+      "type": "memory",
+      "key": "🐏 RAM",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "swap",
+      "key": "🔁 Swap",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "disk",
+      "key": "💾 Disk",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "battery",
+      "key": "🔋 Battery",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "poweradapter",
+      "key": "🔌 Power",
+      "keyColor": "magenta"
+    },
+
+    // Spacer
+    { "type": "custom", "format": "" },
+    
+    // Bottom Colors
+    {
+      "type": "colors",
+      "paddingLeft": 1,
+      "symbol": "circle",
+      "block": {
+        "range": [1, 6]
+      }
+    }
+  ]
+}

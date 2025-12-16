@@ -1,0 +1,15 @@
+[color]
+background = '#232627'
+
+gradient = 1
+
+# التدرج يبدأ من الأعلى باللون الأحمر ويمر بالبرتقالي والأصفر والأزرق وينتهي بالبنفسجي
+
+gradient_color_1 = '#FF4F4F' # أحمر فاتح (لون OS)
+gradient_color_2 = '#FF8F40' # برتقالي (لون Pkgs)
+gradient_color_3 = '#FFCF40' # ذهبي (لون WM)
+gradient_color_4 = '#FFFF55' # أصفر (لون Term)
+gradient_color_5 = '#50BFFF' # سماوي (لون Board)
+gradient_color_6 = '#4080FF' # أزرق (لون Screen)
+gradient_color_7 = '#8040FF' # بنفسجي (لون RAM)
+gradient_color_8 = '#C040FF' # ماجنتا/أرجواني (لون Disk)
