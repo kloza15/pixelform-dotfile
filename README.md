@@ -130,7 +130,6 @@ For icons to appear correctly, you must set your **Terminal Font** or **Monospac
 *   **GNOME Terminal:** Menu ➜ Preferences ➜ Profiles ➜ Text ➜ Custom font ➜ **Hack**.
 *   **XFCE Terminal:** Edit ➜ Preferences ➜ Appearance ➜ Font ➜ **Hack**.
 *   **Other Terminals:** Go to your terminal settings and select **Hack Nerd Font**.
-```
 
 ---
 
