@@ -1,3 +1,4 @@
+```markdown
 <div align="center">
   
   # Pixelform Dotfiles Auto-Installer 🎨
@@ -5,11 +6,13 @@
   **Automate your Linux aesthetic setup with one click.**
   
   <!-- PREVIEW SECTION -->
+  <!-- Terminal Preview -->
   <img src="./screenshots/preview.png" alt="Terminal Preview" width="100%" style="border-radius: 10px; margin-bottom: 20px;">
   
   <br>
   
-  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+  <!-- Wallpaper Preview -->
+  <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="60%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
   <br><br>
 
@@ -32,30 +35,9 @@ Automate the setup of **Fastfetch**, **Cava**, and **Wallpapers** with a specifi
 ```text
 /Your-Project-Folder/
 │
-├── screenshots/                       <-- Create this and put your images here
+├── screenshots/                       <-- Create this folder for README images
 │   ├── preview.png                    <-- The terminal screenshot
-│   └── wallpaper.png                  <-- The Kaneki wallpaper
-│
-├── 1-install-fastfetch-v1-pixelform-dotfile.sh
-├── fastfetch-pixelform-dotfile/       <-- Contains config.jsonc, logos, etc.
-│
-├── 2-install-cava-v1-pixelform-dotfile.sh
-├── cava-pixelform-dotfile/            <-- Contains config files
-│
-└── 3-install-wallpaper-v1-pixelform-dotfile.sh
-└── wallpaper-pixelform-dotfile/       <-- Contains your .jpg or .png images
-***
-
-# Pixelform Dotfiles Auto-Installer 🎨
-
-Automate the setup of **Fastfetch**, **Cava**, and **Wallpapers** with a specific "Pixelform" aesthetic. These scripts are designed to be distro-agnostic (Debian, Fedora, Arch, OpenSUSE, Alpine) and handle dependencies, configurations, and assets automatically using relative paths.
-
-## 📂 Required Directory Structure
-
-**Important:** These scripts rely on **relative paths**. Ensure your folder structure looks exactly like this before running the scripts. The configuration folders must be in the same directory as the `.sh` files.
-
-```text
-/Your-Project-Folder/
+│   └── wallpaper.png                  <-- The wallpaper preview image
 │
 ├── 1-install-fastfetch-v1-pixelform-dotfile.sh
 ├── fastfetch-pixelform-dotfile/       <-- Contains config.jsonc, logos, etc.
@@ -159,3 +141,4 @@ Feel free to fork this repository and submit pull requests if you want to add su
 
 ## 📄 License
 This project is open-source. Feel free to use and modify it.
+```
