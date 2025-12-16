@@ -138,4 +138,3 @@ Feel free to fork this repository and submit pull requests if you want to add su
 
 ## 📄 License
 This project is open-source. Feel free to use and modify it.
-```
