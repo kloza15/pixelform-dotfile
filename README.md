@@ -1,16 +1,11 @@
 <div align="center">
   
-  # Pixelform Dotfiles Auto-Installer 🎨
+  # 🎨 Pixelform Dotfiles Auto-Installer
   
-  **Automate your Linux aesthetic setup with one click.**
+  **Transform your Linux aesthetic in seconds.**
   
   <!-- PREVIEW SECTION -->
-  <!-- Terminal Preview -->
   <img src="./screenshots/preview.png" alt="Terminal Preview" width="100%" style="border-radius: 10px; margin-bottom: 20px;">
-  
-  <br>
-  
-  <!-- Wallpaper Preview -->
   <img src="./screenshots/wallpaper.png" alt="Wallpaper Preview" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
 
   <br><br>
@@ -22,144 +17,72 @@
 
 ---
 
-## 📖 Overview
+## ⚡ Quick Start (Recommended)
 
-Automate the setup of **Fastfetch**, **Cava**, and **Wallpapers** with a specific "Pixelform" aesthetic. These scripts are designed to be distro-agnostic (Debian, Fedora, Arch, OpenSUSE, Alpine) and handle dependencies, configurations, and assets automatically using relative paths.
-
-## 📂 Required Directory Structure
-
-**Important:** These scripts rely on **relative paths**. Ensure your folder structure looks exactly like this before running the scripts. The configuration folders must be in the same directory as the `.sh` files.
-
-```text
-/Your-Project-Folder/
-│
-├── screenshots/                       <-- Create this folder for README images
-│   ├── preview.png                    <-- The terminal screenshot
-│   └── wallpaper.png                  <-- The wallpaper preview image
-│
-├── 1-install-fastfetch-v1-pixelform-dotfile.sh
-├── fastfetch-pixelform-dotfile/       <-- Contains config.jsonc, logos, etc.
-│
-├── 2-install-cava-v1-pixelform-dotfile.sh
-├── cava-pixelform-dotfile/            <-- Contains config files
-│
-└── 3-install-wallpaper-v1-pixelform-dotfile.sh
-└── wallpaper-pixelform-dotfile/       <-- Contains your .jpg or .png images
-```
-
----
-
-## 🚀 Installation & Usage
-
-Follow these steps to download and set up the tools.
-
-### 1. Clone the Repository
-Open your terminal and clone the repository to your local machine. This ensures that the directory structure (relative paths) remains intact.
+Don't want to read? Just copy and paste this entire block into your terminal to install **Fastfetch**, **Cava**, and the **Wallpaper** all at once.
 
 ```bash
+# 1. Clone repository
 git clone https://github.com/kloza15/pixelform-dotfile.git
 cd pixelform-dotfile
-```
 
-### 2. Grant Execution Permissions
-Before running any script, you must make them executable:
-
-```bash
-chmod +x *.sh
-```
-
-### 3. Run Scripts (Individual Mode)
-You can run the scripts one by one depending on what you need.
-
-**Step A: Install Fastfetch, Fonts & Shell Configs**
-```bash
-./1-install-fastfetch-v1-pixelform-dotfile.sh
-```
-
-**Step B: Install Cava & Audio Configs**
-```bash
-./2-install-cava-v1-pixelform-dotfile.sh
-```
-
-**Step C: Apply Wallpaper**
-```bash
-./3-install-wallpaper-v1-pixelform-dotfile.sh
-```
-
----
-
-### 4. Run All Scripts (Combined Mode)
-To install everything at once, copy and paste the following command block into your terminal:
-
-```bash
+# 2. Grant permissions and install everything
 chmod +x *.sh && \
 ./1-install-fastfetch-v1-pixelform-dotfile.sh && \
 ./2-install-cava-v1-pixelform-dotfile.sh && \
 ./3-install-wallpaper-v1-pixelform-dotfile.sh
 ```
+
 ---
 
-## ⌨️ How to Run Manually
+## ⚠️ Important: Final Step
 
-Once installed, here is how you can use the tools directly from your terminal:
+**To make the icons appear correctly, you must manually change your terminal font.**
 
-### 🖥️ Fastfetch
-The installer automatically adds Fastfetch to your shell startup (so it appears when you open a new window). To run it manually on demand, simply type:
+The installer adds **Hack Nerd Font** to your system, but it cannot change your terminal settings for you.
 
+1.  Open your Terminal **Settings** or **Preferences**.
+2.  Find the **Font** or **Appearance** section.
+3.  Select **"Hack Nerd Font"** (or just "Hack").
+4.  *Restart your terminal to see the changes.*
+
+---
+
+## 🎮 How to Use
+
+Once installed, here is how to control your new tools:
+
+### 🖥️ Fastfetch (System Info)
+It launches automatically when you open a terminal. To run it again manually:
 ```bash
 fastfetch
 ```
-*Note: This will load the custom Pixelform configuration automatically.*
 
-### 🎵 Cava (Audio Visualizer)
-To start the visualizer, play some audio on your system and run:
-
+### 🎵 Cava (Music Visualizer)
+Play some music, then run:
 ```bash
 cava
 ```
 **Controls:**
-*   **UP / DOWN Arrows:** Increase or decrease sensitivity.
-*   **LEFT / RIGHT Arrows:** Change bar width.
-*   **q** or **CTRL+C:** Quit the application.
+*   `Arrow Keys`: Adjust sensitivity and bar width.
+*   `Q`: Quit.
 
 ---
 
-## 🛠️ Script Details
+## 🛠️ Custom Installation (Advanced)
 
-### 1️⃣ Fastfetch Setup (`1-install-fastfetch...`)
-This script configures the terminal system information tool.
-*   **System Detection:** Automatically detects OS (Ubuntu, Arch, Fedora, etc.) and uses the correct package manager (`apt`, `dnf`, `pacman`, `zypper`, `apk`).
-*   **Dependencies:** Installs `fastfetch`, `chafa` (for images), `git`, `unzip`, and `wget`.
-*   **Lsix Support:** If `lsix` isn't in your repo, it compiles it manually from GitHub.
-*   **Fonts:** Downloads and installs **Hack Nerd Font** (v3.003) to `~/.local/share/fonts` and updates the cache.
-*   **Shell Integration:** Automatically adds `fastfetch` to the startup of `.bashrc`, `.zshrc`, and `config.fish`.
-*   **Config Deployment:** Copies configs from the local folder to `~/.config/fastfetch`.
+If you only want specific parts of the setup, run these scripts individually inside the folder:
 
-### 2️⃣ Cava Setup (`2-install-cava...`)
-This script handles the Cava audio visualizer.
-*   **Clean Install:** Performs a `remove --purge` on existing Cava installations to ensure no conflicts occur.
-*   **Installation:** Re-installs the latest version via your package manager.
-*   **Config Deployment:** Copies your custom dotfiles to `~/.config/cava`.
-*   **Permissions:** Automatically sets read/write/execute permissions (777) on the config folder.
-
-### 3️⃣ Wallpaper Setup (`3-install-wallpaper...`)
-This script manages your desktop background.
-*   **Image Detection:** Scans the `wallpaper-pixelform-dotfile` folder and picks the first image found.
-*   **Archiving:** Copies the image to `~/Pictures/Wallpapers/Pixelform/` for safekeeping.
-*   **Auto-Apply:** Detects your Desktop Environment and applies the wallpaper:
-    *   **KDE Plasma:** Uses `plasma-apply-wallpaperimage`.
-    *   **GNOME:** Uses `gsettings`.
-    *   **XFCE:** Uses `xfconf-query`.
-    *   **WMs (i3, bspwm, etc.):** Auto-installs and uses `feh` as a fallback.
+| Component | Command | Description |
+| :--- | :--- | :--- |
+| **System Info** | `./1-install-fastfetch-v1-pixelform-dotfile.sh` | Installs Fastfetch, Fonts, and configures `.bashrc` / `.zshrc`. |
+| **Visualizer** | `./2-install-cava-v1-pixelform-dotfile.sh` | Installs Cava and applies audio visualizer configs. |
+| **Wallpaper** | `./3-install-wallpaper-v1-pixelform-dotfile.sh` | Detects your desktop (KDE/GNOME/etc.) and applies the background. |
 
 ---
 
-### ⚠️ Manual Font Setup
-For icons to appear correctly, you must set your **Terminal Font** or **Monospace Font** to **"Hack"**.
+## ℹ️ Compatibility & Details
 
-*   **KDE Plasma:** System Settings ➜ Appearance ➜ Fonts ➜ Fixed width ➜ **Hack 10pt**.
-*   **GNOME Terminal:** Menu ➜ Preferences ➜ Profiles ➜ Text ➜ Custom font ➜ **Hack**.
-*   **XFCE Terminal:** Edit ➜ Preferences ➜ Appearance ➜ Font ➜ **Hack**.
-*   **Other Terminals:** Go to your terminal settings and select **Hack Nerd Font**.
-
-
+*   **Supported OS:** Debian, Ubuntu, Fedora, Arch Linux, OpenSUSE, Alpine.
+*   **Wallpaper Support:** Works automatically on KDE Plasma, GNOME, XFCE, and Window Managers (via `feh`).
+*   **Directory Structure:** The scripts use **relative paths**. Do not move the `.sh` files outside the main folder, or they will lose access to the configuration files.
