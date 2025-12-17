@@ -43,6 +43,18 @@ chmod +x *.sh && \
 
 ---
 
+## 🛠️ Custom Installation (Advanced)
+
+If you only want specific parts of the setup, run these scripts individually inside the folder:
+
+| Component | Command | Description |
+| :--- | :--- | :--- |
+| **System Info** | `./1-install-fastfetch-v1-pixelform-dotfile.sh` | Installs Fastfetch, Fonts, and configures `.bashrc` / `.zshrc`. |
+| **Visualizer** | `./2-install-cava-v1-pixelform-dotfile.sh` | Installs Cava and applies audio visualizer configs. |
+| **Wallpaper** | `./3-install-wallpaper-v1-pixelform-dotfile.sh` | Detects your desktop (KDE/GNOME/etc.) and applies the background. |
+
+---
+
 ## ⚠️ Important: Final Step
 
 **To make the icons appear correctly, you must manually change your terminal font.**
@@ -74,15 +86,3 @@ cava
 **Controls:**
 *   `Arrow Keys`: Adjust sensitivity and bar width.
 *   `Q`: Quit.
-
----
-
-## 🛠️ Custom Installation (Advanced)
-
-If you only want specific parts of the setup, run these scripts individually inside the folder:
-
-| Component | Command | Description |
-| :--- | :--- | :--- |
-| **System Info** | `./1-install-fastfetch-v1-pixelform-dotfile.sh` | Installs Fastfetch, Fonts, and configures `.bashrc` / `.zshrc`. |
-| **Visualizer** | `./2-install-cava-v1-pixelform-dotfile.sh` | Installs Cava and applies audio visualizer configs. |
-| **Wallpaper** | `./3-install-wallpaper-v1-pixelform-dotfile.sh` | Detects your desktop (KDE/GNOME/etc.) and applies the background. |
