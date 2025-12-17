@@ -17,6 +17,14 @@
 
 ---
 
+## ℹ️ Compatibility & Details
+
+*   **Supported OS:** Debian, Ubuntu, Fedora, Arch Linux, OpenSUSE, Alpine.
+*   **Wallpaper Support:** Works automatically on KDE Plasma, GNOME, XFCE, and Window Managers (via `feh`).
+*   **Directory Structure:** The scripts use **relative paths**. Do not move the `.sh` files outside the main folder, or they will lose access to the configuration files.
+
+---
+
 ## ⚡ Quick Start (Recommended)
 
 Don't want to read? Just copy and paste this entire block into your terminal to install **Fastfetch**, **Cava**, and the **Wallpaper** all at once.
@@ -79,10 +87,4 @@ If you only want specific parts of the setup, run these scripts individually ins
 | **Visualizer** | `./2-install-cava-v1-pixelform-dotfile.sh` | Installs Cava and applies audio visualizer configs. |
 | **Wallpaper** | `./3-install-wallpaper-v1-pixelform-dotfile.sh` | Detects your desktop (KDE/GNOME/etc.) and applies the background. |
 
----
 
-## ℹ️ Compatibility & Details
-
-*   **Supported OS:** Debian, Ubuntu, Fedora, Arch Linux, OpenSUSE, Alpine.
-*   **Wallpaper Support:** Works automatically on KDE Plasma, GNOME, XFCE, and Window Managers (via `feh`).
-*   **Directory Structure:** The scripts use **relative paths**. Do not move the `.sh` files outside the main folder, or they will lose access to the configuration files.
