@@ -17,7 +17,7 @@
 
 ---
 
-## ℹ️ Compatibility & Details
+## 🧩 Compatibility & Details
 
 *   **Supported OS:** Debian, Ubuntu, Fedora, Arch Linux, OpenSUSE, Alpine.
 *   **Wallpaper Support:** Works automatically on KDE Plasma, GNOME, XFCE, and Window Managers (via `feh`).
@@ -86,5 +86,3 @@ If you only want specific parts of the setup, run these scripts individually ins
 | **System Info** | `./1-install-fastfetch-v1-pixelform-dotfile.sh` | Installs Fastfetch, Fonts, and configures `.bashrc` / `.zshrc`. |
 | **Visualizer** | `./2-install-cava-v1-pixelform-dotfile.sh` | Installs Cava and applies audio visualizer configs. |
 | **Wallpaper** | `./3-install-wallpaper-v1-pixelform-dotfile.sh` | Detects your desktop (KDE/GNOME/etc.) and applies the background. |
-
-
