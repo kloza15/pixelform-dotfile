@@ -89,6 +89,30 @@ chmod +x *.sh && \
 ./2-install-cava-v1-pixelform-dotfile.sh && \
 ./3-install-wallpaper-v1-pixelform-dotfile.sh
 ```
+---
+
+## ⌨️ How to Run Manually
+
+Once installed, here is how you can use the tools directly from your terminal:
+
+### 🖥️ Fastfetch
+The installer automatically adds Fastfetch to your shell startup (so it appears when you open a new window). To run it manually on demand, simply type:
+
+```bash
+fastfetch
+```
+*Note: This will load the custom Pixelform configuration automatically.*
+
+### 🎵 Cava (Audio Visualizer)
+To start the visualizer, play some audio on your system and run:
+
+```bash
+cava
+```
+**Controls:**
+*   **UP / DOWN Arrows:** Increase or decrease sensitivity.
+*   **LEFT / RIGHT Arrows:** Change bar width.
+*   **q** or **CTRL+C:** Quit the application.
 
 ---
 
