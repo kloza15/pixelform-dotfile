@@ -23,7 +23,7 @@
 The script supports almost any distribution based on these major families:
 
 *   **Debian & Ubuntu Family:**
-    *   *Examples:* Ubuntu (20.04+), Linux Mint, Pop!_OS, Kali Linux, Zorin OS, KDE Neon, Elementary OS, MX Linux.
+    *   *Examples:* Ubuntu, Linux Mint, Pop!_OS, Kali Linux, Zorin OS, KDE Neon, Elementary OS, MX Linux.
 *   **Arch Linux Family:**
     *   *Examples:* Arch Linux, Manjaro, EndeavourOS, Garuda Linux, ArcoLinux.
 *   **Fedora & RHEL Family:**
