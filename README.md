@@ -217,22 +217,50 @@ If you encounter any issues, find your problem below and copy the commands to fi
     ```bash
     chmod +x *.sh
     ```
-### 2. 🖼️ Images/Logo Not Showing in Terminal
-*   **Problem:** Fastfetch shows text/ASCII art instead of the image, or `lsix` shows nothing.
-*   **Reason:** Your **Terminal Emulator** does not support Image Protocols (Sixel or Kitty graphics).
-    *   ❌ **Often Unsupported:** GNOME Terminal (default), older XFCE Terminal, standard Debian terminal.
-    *   ✅ **Supported:** Konsole (KDE), Kitty, WezTerm, Foot, Alacritty (requires config), Ghostty.
+### 3. 🖼️ Images/Logo Not Showing in Terminal
+*   **Problem:** Fastfetch displays the text logo (ASCII art) instead of the actual image, or `lsix` command runs but shows nothing.
+*   **Reason:** **This is a software limitation, not a bug.**
+    To display images inside a terminal, the terminal emulator must support specific graphics protocols (like **Sixel** or **Kitty Graphics Protocol**). Most default Linux terminals are designed for *text only* and cannot render pixels.
+
+    **Check your terminal against this list:**
+
+    *   ❌ **Unsupported Terminals (Text Only):**
+        *   **GNOME Terminal** (Default on Ubuntu, Fedora, Debian)
+        *   **MATE Terminal**
+        *   **Terminator**
+        *   **Guake**
+        *   **Tilix**
+        *   **Pantheon Terminal** (Elementary OS)
+        *   **LXTerminal**
+        *   **XFCE Terminal** (Older versions < 0.9.0)
+
+    *   ✅ **Supported Terminals (Graphics Ready):**
+        *   **Kitty** (Highly recommended, best performance)
+        *   **Konsole** (Default on KDE Plasma v22.04+)
+        *   **WezTerm** (Cross-platform, high feature set)
+        *   **Foot** (Fast, Wayland only)
+        *   **Ghostty** (Modern, GPU accelerated)
+        *   **mlterm**
+        *   **XTerm** (If compiled with Sixel support)
+
 *   **Solution:**
-    1.  **Test Compatibility:** Run this command:
+    1.  **Test your current terminal:**
+        Run the command below. If you see a grid of tiny images, your terminal works. If you see nothing or text, it is incompatible.
         ```bash
         lsix
         ```
-        If nothing appears, your terminal cannot display images.
-    2.  **Fix:** Install a modern terminal like **Konsole** or **Kitty**:
-        ```bash
-        sudo apt install konsole   # Debian/Ubuntu
-        sudo pacman -S kitty       # Arch
-        ```
+    2.  **The Fix:** Install a modern terminal that supports images.
+        *   **Option A (Recommended for standard users):** Install **Konsole**.
+            ```bash
+            sudo apt install konsole     # Debian/Ubuntu
+            sudo dnf install konsole     # Fedora
+            ```
+        *   **Option B (Recommended for power users):** Install **Kitty**.
+            ```bash
+            sudo apt install kitty       # Debian/Ubuntu
+            sudo pacman -S kitty         # Arch
+            ```
+
 ### 3. 🟥 Broken Icons (Squares/Boxes like □□□)
 *   **Problem:** Fastfetch shows squares or weird symbols instead of icons.
 *   **Reason:** Your terminal is not using a "Nerd Font". The script installs the font, but **you** must tell the terminal to use it.
@@ -290,4 +318,4 @@ If you encounter any issues, find your problem below and copy the commands to fi
     
     # Then run the script again
     ./1-install-fastfetch-v1-pixelform-dotfile.sh
-    ```
+    ```   
