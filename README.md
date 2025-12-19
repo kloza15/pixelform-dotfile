@@ -77,21 +77,13 @@ Detects your desktop environment and applies the Pixelform wallpaper.
 ## ⚠️ Important: Final Step (Fix Broken Icons)
 
 **Do not skip this step.**
-If you open your terminal and see **squares (□□□)** or weird question marks instead of icons (like the Linux Tux, Apple logo, or folder icons), it means your terminal is not using the correct font yet.
+If you open your terminal and see **squares (□□□)** or weird question marks instead of icons, it means your terminal is not using the correct font yet.
 
 The script has installed **"Hack Nerd Font"** into your system, but for security reasons, it **cannot** force your terminal to use it. You must change this setting manually.
 
-### How to set the font:
+### How to set the font (Choose your desktop):
 
-#### 1. GNOME Terminal (Ubuntu, Fedora, Debian default)
-1.  Open Terminal.
-2.  Click the **Menu button (≡)** in the top right corner → **Preferences**.
-3.  Click on your profile (usually named "Unnamed" or "Default") on the left sidebar.
-4.  Check the box **"Custom font"**.
-5.  Click the font name button and search for **`Hack Nerd Font`**.
-6.  Select **Regular** or **Mono** and click Select.
-
-#### 2. Konsole (KDE Plasma)
+#### 1. Konsole (Default for KDE Plasma, Kubuntu, Steam Deck)
 1.  Open Konsole.
 2.  Go to **Settings** → **Edit Current Profile**.
 3.  Click the **Appearance** tab.
@@ -99,7 +91,23 @@ The script has installed **"Hack Nerd Font"** into your system, but for security
 5.  Select **`Hack Nerd Font`** from the list.
 6.  Click OK → Apply.
 
-#### 3. XFCE Terminal
+#### 2. GNOME Terminal (Default for Ubuntu, Fedora, Debian)
+1.  Open Terminal.
+2.  Click the **Menu button (≡)** in the top right corner → **Preferences**.
+3.  Click on your profile (usually named "Unnamed" or "Default") on the left sidebar.
+4.  Check the box **"Custom font"**.
+5.  Click the font name button and search for **`Hack Nerd Font`**.
+6.  Select **Regular** or **Mono** and click Select.
+
+#### 3. Cinnamon Terminal (Default for Linux Mint)
+1.  Open Terminal.
+2.  Go to **Edit** → **Preferences** (or right-click anywhere and select Preferences).
+3.  Select your **Profile** (usually "Unnamed") on the left sidebar.
+4.  Click the **Text** tab.
+5.  Check the box **"Custom font"**.
+6.  Click the button next to it and choose **`Hack Nerd Font`**.
+
+#### 4. XFCE Terminal (Default for Kali Linux, Xubuntu, Lite)
 1.  Open Terminal.
 2.  Go to **Edit** → **Preferences**.
 3.  Click the **Appearance** tab.
