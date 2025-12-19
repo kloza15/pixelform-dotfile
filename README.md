@@ -74,37 +74,80 @@ Detects your desktop environment and applies the Pixelform wallpaper.
 
 ---
 
-## ⚠️ Important: Final Step
+## ⚠️ Important: Final Step (Fix Broken Icons)
 
-**To make the icons appear correctly, you must manually change your terminal font.**
+**Do not skip this step.**
+If you open your terminal and see **squares (□□□)** or weird question marks instead of icons (like the Linux Tux, Apple logo, or folder icons), it means your terminal is not using the correct font yet.
 
-The installer adds **Hack Nerd Font** to your system, but it cannot change your terminal settings for you.
+The script has installed **"Hack Nerd Font"** into your system, but for security reasons, it **cannot** force your terminal to use it. You must change this setting manually.
 
-1.  Open your Terminal **Settings** or **Preferences**.
-2.  Find the **Font** or **Appearance** section.
-3.  Select **"Hack Nerd Font"** (or just "Hack").
-4.  *Restart your terminal to see the changes.*
+### How to set the font:
+
+#### 1. GNOME Terminal (Ubuntu, Fedora, Debian default)
+1.  Open Terminal.
+2.  Click the **Menu button (≡)** in the top right corner → **Preferences**.
+3.  Click on your profile (usually named "Unnamed" or "Default") on the left sidebar.
+4.  Check the box **"Custom font"**.
+5.  Click the font name button and search for **`Hack Nerd Font`**.
+6.  Select **Regular** or **Mono** and click Select.
+
+#### 2. Konsole (KDE Plasma)
+1.  Open Konsole.
+2.  Go to **Settings** → **Edit Current Profile**.
+3.  Click the **Appearance** tab.
+4.  Click **Choose Font**.
+5.  Select **`Hack Nerd Font`** from the list.
+6.  Click OK → Apply.
+
+#### 3. XFCE Terminal
+1.  Open Terminal.
+2.  Go to **Edit** → **Preferences**.
+3.  Click the **Appearance** tab.
+4.  Click on the current font name.
+5.  Search for **`Hack`** or **`Hack Nerd Font`** and select it.
 
 ---
 
-## 🎮 How to Use
+## 🎮 How to Use Your New Tools
 
-Once installed, here is how to control your new tools:
+Here is a guide on how to control and customize the tools you just installed.
 
-### 🖥️ Fastfetch (System Info)
-It launches automatically when you open a terminal. To run it again manually:
-```bash
-fastfetch
-```
+### 🖥️ Fastfetch (System Information)
+This tool displays your system specs (OS, RAM, CPU) alongside a beautiful logo.
 
-### 🎵 Cava (Music Visualizer)
-Play some music, then run:
-```bash
-cava
-```
-**Controls:**
-*   `Arrow Keys`: Adjust sensitivity and bar width.
-*   `Q`: Quit.
+*   **Automatic:** It runs automatically every time you open a new terminal window.
+*   **Manual Run:**
+    ```bash
+    fastfetch
+    ```
+*   **⚙️ Customization (Pro Tip):**
+    Want to change the logo, colors, or modules? Edit the configuration file here:
+    ```bash
+    nano ~/.config/fastfetch/config.jsonc
+    ```
+
+### 🎵 Cava (Audio Visualizer)
+This tool creates graphical bars that dance to the beat of your music.
+
+1.  **Start Music:** Open Spotify, YouTube, or a music player and play a song.
+2.  **Launch Cava:**
+    ```bash
+    cava
+    ```
+
+**⌨️ Keyboard Controls:**
+| Key | Action |
+| :--- | :--- |
+| **`Up` / `Down`** | Increase or decrease sensitivity (if bars are too low or too high). |
+| **`Left` / `Right`** | Increase or decrease the width of the bars. |
+| **`F` / `B`** | Change the foreground/background color (temporary). |
+| **`Q`** or **`Esc`** | Quit and close Cava. |
+
+*   **⚙️ Customization (Pro Tip):**
+    To permanently change colors, sensitivity, or frame rate, edit the config:
+    ```bash
+    nano ~/.config/cava/config
+    ```
 
 ---
 
