@@ -3,11 +3,10 @@
 # ==============================================================================
 # Script Name: 1-install-fastfetch-v1-pixelform-dotfile.sh
 # Description: Installs fastfetch, tools, fonts, and deploys pixelform configs.
-# Author:      [Automated Script]
+# STATUS: FIXED (lsix manual install enforced for Ubuntu)
 # ==============================================================================
 
 # 1. Safety & Configuration
-# ------------------------------------------------------------------------------
 set -euo pipefail
 
 # Colors
@@ -18,26 +17,19 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # 2. Path Variables
-# ------------------------------------------------------------------------------
-# Detect where the script is running from
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# The folder containing your fastfetch config files (must be next to this script)
-# UPDATED: Changed from "fastfetch" to "fastfetch-pixelform-dotfile"
 SOURCE_FOLDER_NAME="fastfetch-pixelform-dotfile" 
 SOURCE_PATH="${SCRIPT_DIR}/${SOURCE_FOLDER_NAME}"
 TARGET_PATH="${HOME}/.config/fastfetch"
 FONT_DIR="${HOME}/.local/share/fonts"
 
 # 3. Logging Helper Functions
-# ------------------------------------------------------------------------------
 log_info() { echo -e "${BLUE}[INFO]${NC} $1"; }
 log_success() { echo -e "${GREEN}[SUCCESS]${NC} $1"; }
 log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 # 4. Helper: Manual Install for lsix
-# ------------------------------------------------------------------------------
 install_lsix_manually() {
     log_info "Installing 'lsix' manually from GitHub..."
     if command -v git &> /dev/null; then
@@ -50,14 +42,13 @@ install_lsix_manually() {
         sudo chmod +x /usr/local/bin/lsix
         
         rm -rf "$TEMP_DIR"
-        log_success "lsix installed."
+        log_success "lsix installed successfully."
     else
         log_warn "'git' is missing. Skipping lsix manual install."
     fi
 }
 
 # 5. Step 1: Install Dependencies
-# ------------------------------------------------------------------------------
 install_packages() {
     log_info "Detecting System and Installing Packages..."
     
@@ -68,9 +59,13 @@ install_packages() {
         log_info "System: $NAME ($ID)"
         
         if command -v apt &> /dev/null; then
-            # Debian / Ubuntu
+            # Debian / Ubuntu / Mint
             sudo apt update
-            sudo apt install -y fastfetch chafa lsix $TOOLS
+            # REMOVED 'lsix' from apt because it is not in standard repos
+            sudo apt install -y fastfetch chafa $TOOLS
+            
+            # Trigger manual install for lsix
+            install_lsix_manually
 
         elif command -v dnf &> /dev/null; then
             # Fedora
@@ -78,8 +73,9 @@ install_packages() {
             install_lsix_manually
 
         elif command -v pacman &> /dev/null; then
-            # Arch
+            # Arch Linux
             sudo pacman -Syu --noconfirm fastfetch chafa $TOOLS
+            # Try installing lsix, if fails, do manual
             if ! sudo pacman -S --noconfirm lsix 2>/dev/null; then
                 install_lsix_manually
             fi
@@ -104,7 +100,6 @@ install_packages() {
 }
 
 # 6. Step 2: Deploy Config Files
-# ------------------------------------------------------------------------------
 deploy_configs() {
     log_info "Deploying Configuration..."
     log_info "Source: $SOURCE_PATH"
@@ -112,7 +107,6 @@ deploy_configs() {
     if [ ! -d "$SOURCE_PATH" ]; then
         log_error "Source directory not found!"
         echo "       Expected path: $SOURCE_PATH"
-        log_info "Please ensure the folder '$SOURCE_FOLDER_NAME' exists next to this script."
         exit 1
     fi
 
@@ -126,19 +120,17 @@ deploy_configs() {
     mkdir -p "$TARGET_PATH"
     cp -r "$SOURCE_PATH/"* "$TARGET_PATH/"
     
-    # Set permissions
-    chmod -R 777 "$TARGET_PATH"
+    # Set permissions (Corrected from 777 to 755)
+    chmod -R 755 "$TARGET_PATH"
     
     log_success "Configuration copied to $TARGET_PATH"
 }
 
 # 7. Step 3: Install Hack Font
-# ------------------------------------------------------------------------------
 install_fonts() {
     log_info "Checking Fonts..."
     mkdir -p "$FONT_DIR"
 
-    # We use a temp dir instead of Downloads to keep system clean
     local TEMP_DIR
     TEMP_DIR=$(mktemp -d)
     local ZIP_FILE="$TEMP_DIR/Hack.zip"
@@ -160,13 +152,11 @@ install_fonts() {
 }
 
 # 8. Step 4: Update Shell RC Files
-# ------------------------------------------------------------------------------
 update_shell_config() {
     local FILE="$1"
     local CMD="fastfetch"
 
     if [ -f "$FILE" ]; then
-        # Check if fastfetch is already in the file
         if ! grep -q "$CMD" "$FILE"; then
             echo "" >> "$FILE"
             echo "# Auto-added by setup script" >> "$FILE"
@@ -186,7 +176,6 @@ setup_shells() {
 }
 
 # 9. Main Execution
-# ------------------------------------------------------------------------------
 main() {
     echo ""
     echo "-----------------------------------------------------"
