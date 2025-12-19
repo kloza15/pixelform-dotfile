@@ -86,6 +86,75 @@ Detects your desktop environment and applies the Pixelform wallpaper.
 ./3-install-wallpaper-v1-pixelform-dotfile.sh
 ```
 
+## 🖐️ Manual Installation (ZIP Method)
+
+If you prefer **not** to use the automated scripts, or if you want full control over where files go, follow these steps to install everything manually.
+
+### 1. Install Required Tools
+First, you must install the programs yourself using your package manager.
+
+*   **Ubuntu/Debian:**
+    ```bash
+    sudo apt update
+    sudo apt install fastfetch cava unzip wget
+    ```
+*   **Arch Linux:**
+    ```bash
+    sudo pacman -S fastfetch cava unzip wget
+    ```
+*   **Fedora:**
+    ```bash
+    sudo dnf install fastfetch cava unzip wget
+    ```
+### 2. Download & Extract Files
+1.  Scroll to the top of this GitHub page.
+2.  Click the green **Code** button and select **Download ZIP**.
+3.  Extract the ZIP file. You will see folders like `fastfetch-pixelform-dotfile` and `cava-pixelform-dotfile`.
+
+### 3. Move Configuration Files
+You need to move the contents of these folders into your system's configuration directory (`~/.config`).
+
+#### A. Setup Fastfetch
+Copy the config files from the downloaded folder to the system path.
+```bash
+# 1. Create the target folder
+mkdir -p ~/.config/fastfetch
+
+# 2. Copy files (Replace 'Downloads/pixelform...' with your actual path)
+cp -r ~/Downloads/pixelform-dotfile-main/fastfetch-pixelform-dotfile/* ~/.config/fastfetch/
+```
+
+#### B. Setup Cava (Visualizer)
+Copy the Cava configuration.
+```bash
+# 1. Create the target folder
+mkdir -p ~/.config/cava
+
+# 2. Copy files
+cp -r ~/Downloads/pixelform-dotfile-main/cava-pixelform-dotfile/* ~/.config/cava/
+```
+
+### 4. Setup Wallpaper
+Move the wallpaper to your Pictures folder.
+```bash
+mkdir -p ~/Pictures/Wallpapers
+cp ~/Downloads/pixelform-dotfile-main/wallpaper-pixelform-dotfile/*.png ~/Pictures/Wallpapers/
+```
+*   **Action:** Now, right-click your desktop and select **"Change Background"**, then browse to `~/Pictures/Wallpapers` and select the image.
+
+### 5. Install Fonts (Crucial for Icons)
+The icons will not appear unless you install **Hack Nerd Font** manually.
+
+1.  **Download:** Go to [Nerd Fonts Website](https://www.nerdfonts.com/font-downloads) and download **Hack Nerd Font**.
+2.  **Install:**
+    *   Extract the font ZIP.
+    *   Move the `.ttf` files to `~/.local/share/fonts/` (create the folder if it doesn't exist).
+    *   Run this command to update the cache:
+        ```bash
+        fc-cache -fv
+        ```
+3.  **Activate:** Go to your Terminal Settings and select **Hack Nerd Font** (as explained in the "Final Step" section above).
+
 ---
 
 ## ⚠️ Important: Final Step (Fix Broken Icons)
